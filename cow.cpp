@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 // <!> Begin playground.cpp <!> 
 #include <cstring>
 #include <stdarg.h>
@@ -1030,7 +1031,7 @@ real _window_macbook_retina_fixer_VERY_MYSTERIOUS;
 // #define DEBUG_OPENGL
 
 #ifdef OPERATING_SYSTEM_WINDOWS
-GLenum glCheckError_(const char *file, int line)
+GLenum glCheckError_(const char *, int)
 {
     GLenum errorCode;
     while ((errorCode = glGetError()) != GL_NO_ERROR)
@@ -1046,8 +1047,8 @@ GLenum glCheckError_(const char *file, int line)
             case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
             case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
         }
-        void MESSAGE_FAILURE(char *format, ...);
-        MESSAGE_FAILURE("GL ERROR %s %s %d\n", error, file, line);
+        // void MESSAGE_FAILURE(char *format, ...);
+        // MESSAGE_FAILURE("GL ERROR %s %s %d\n", error, file, line);
     }
     return errorCode;
 }
@@ -1197,8 +1198,8 @@ vec2 window_get_size_Pixel() {
     real height = real(_height) / _window_macbook_retina_fixer_VERY_MYSTERIOUS;
     return { width, height };
 }
-uint window_get_width_Pixel() { return window_get_size_Pixel().x; }
-uint window_get_height_Pixel() { return window_get_size_Pixel().y; }
+uint window_get_width_Pixel() { return uint(window_get_size_Pixel().x); }
+uint window_get_height_Pixel() { return uint(window_get_size_Pixel().y); }
 
 
 void gl_scissor_Pixel(double x, double y, double dx, double dy) {
