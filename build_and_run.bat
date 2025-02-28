@@ -133,7 +133,6 @@ else
         $ARCH \
 
     clang++ \
-        -ftime-trace \
         -g \
         -o executable $(basename $1 .cpp).o \
         -L./opengl   \
